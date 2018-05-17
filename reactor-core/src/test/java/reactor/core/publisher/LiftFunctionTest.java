@@ -29,7 +29,7 @@ public class LiftFunctionTest {
 		                           .hide();
 
 		Operators.LiftFunction<Integer, Integer> liftFunction =
-				new Operators.LiftFunction<>(null, (s, actual) -> actual);
+				Operators.LiftFunction.liftScannable(null, (s, actual) -> actual);
 		Publisher<Integer> liftOperator = liftFunction.apply(source);
 
 		assertThat(liftOperator)
@@ -43,7 +43,7 @@ public class LiftFunctionTest {
 		                           .hide();
 
 		Operators.LiftFunction<Integer, Integer> liftFunction =
-				new Operators.LiftFunction<>(null, (s, actual) -> actual);
+				Operators.LiftFunction.liftScannable(null, (s, actual) -> actual);
 		Publisher<Integer> liftOperator = liftFunction.apply(source);
 
 		assertThat(liftOperator)
@@ -58,7 +58,7 @@ public class LiftFunctionTest {
 		                                   .hide();
 
 		Operators.LiftFunction<Integer, Integer> liftFunction =
-				new Operators.LiftFunction<>(null, (s, actual) -> actual);
+				Operators.LiftFunction.liftScannable(null, (s, actual) -> actual);
 		Publisher<Integer> liftOperator = liftFunction.apply(source);
 
 		assertThat(liftOperator)
@@ -72,7 +72,7 @@ public class LiftFunctionTest {
 		                                      .publish(); //TODO hide if ConnectableFlux gets a hide function
 
 		Operators.LiftFunction<Integer, Integer> liftFunction =
-				new Operators.LiftFunction<>(null, (s, actual) -> actual);
+				Operators.LiftFunction.liftScannable(null, (s, actual) -> actual);
 		Publisher<Integer> liftOperator = liftFunction.apply(source);
 
 		assertThat(liftOperator)
@@ -87,7 +87,7 @@ public class LiftFunctionTest {
 				.groupBy(i -> "" + i);
 
 		Operators.LiftFunction<Integer, Integer> liftFunction =
-				new Operators.LiftFunction<>(null, (s, actual) -> actual);
+				Operators.LiftFunction.liftScannable(null, (s, actual) -> actual);
 
 		sourceGroups.map(g -> liftFunction.apply(g)) //TODO hide if GroupedFlux gets a proper hide() function
 		            .doOnNext(liftOperator -> assertThat(liftOperator)
